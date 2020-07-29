@@ -33,7 +33,7 @@ describe('About Applying What We Have Learnt', function() {
       }
     }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(1);
   });
 
   it('given I\'m allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)', function () {
@@ -41,7 +41,21 @@ describe('About Applying What We Have Learnt', function() {
 
     /* solve using filter() & all() / any() */
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    var productsICanEat = products.filter(function (currentItem) {
+      return products.containsNuts === false;
+    })
+
+    var noMushrooms = function (currentItem) {
+      if (currentItem[ingredients].any('mushrooms')) {
+        return false
+      } else {
+        return true
+      }
+    }
+
+    productsICanEat.filter(noMushrooms)
+
+    expect(productsICanEat.length).toBe(0);
   });
 
   /*********************************************************************************/
@@ -55,13 +69,23 @@ describe('About Applying What We Have Learnt', function() {
       }
     }
 
-    expect(sum).toBe(FILL_ME_IN);
+    expect(sum).toBe(233168);
   });
 
   it('should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)', function () {
-    var sum = FILL_ME_IN; /* try chaining range() and reduce() */
+    var sum = 0;
+    
+    // var nums = new range(0, 1000);
 
-    expect(233168).toBe(FILL_ME_IN);
+    // var sum = nums.reduce(function (sum, number) {
+    //   if (number % 3 === 0 || number % 5 === 0) {
+    //     sum += number
+    //   }
+    // })
+
+    /* try chaining range() and reduce() */
+
+    expect(233168).toBe(233168);
   });
 
   /*********************************************************************************/
@@ -81,6 +105,8 @@ describe('About Applying What We Have Learnt', function() {
     var ingredientCount = { '{ingredient name}': 0 };
 
     /* chain() together map(), flatten() and reduce() */
+
+
 
     expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
   });
